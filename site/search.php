@@ -25,7 +25,7 @@
 
 <br />
 <br />	
-<a style="margin-left:5%" href="index.php">Home</a>
+<a style="margin-left:5%" href="index.php">[new search]</a>
 <br />
 <br />
 <br />
@@ -39,7 +39,7 @@
 <?php
     mysql_connect("localhost", "root", "");
 	mysql_select_db("sjsucsor_160g4fall2013");
-    $result = mysql_query("SELECT * FROM course_data WHERE site LIKE '%$_GET[term]%'");
+    $result = mysql_query("SELECT * FROM course_data WHERE site LIKE '%$_GET[term]%' OR title LIKE '%$_GET[term]%' OR category LIKE '%$_GET[term]%'");
 ?>
 
 <div class="container">

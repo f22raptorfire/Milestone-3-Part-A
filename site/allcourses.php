@@ -22,7 +22,7 @@
     
 <br />
 <br />	
-<a style="margin-left:5%" href="index.php">Home</a>
+<a style="margin-left:5%" href="index.php">[new search]</a>	
 <br />
 <br />
 <br />
