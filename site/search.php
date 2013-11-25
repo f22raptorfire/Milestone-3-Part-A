@@ -37,8 +37,7 @@
 <br />
 
 <?php
-    mysql_connect("localhost", "root", "");
-	mysql_select_db("sjsucsor_160g4fall2013");
+    include("dbconnect.php");
     $result = mysql_query("SELECT * FROM course_data WHERE site LIKE '%$_GET[term]%' OR title LIKE '%$_GET[term]%' OR category LIKE '%$_GET[term]%'");
 ?>
 

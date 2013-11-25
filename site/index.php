@@ -29,12 +29,24 @@ padding: .2em 1em;
 		margin-right:auto;
 		text-align: center;
 	}
-
+	
+	img {padding: 5px;}
+	
+	p {
+		padding: 5px;
+		text-align: left;
+	}
+	
 	</style>
 	
 	
 </head>
 <body>
+
+<?php include "slider.php";?>
+
+
+
 	<br />
 	<br />
 	
