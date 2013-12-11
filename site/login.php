@@ -3,29 +3,8 @@
 UserCake Version: 2.0.2
 http://usercake.com
 */
-
-include "header.php";
-?>
-
-<link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
-<link rel="stylesheet" type="text/css" href="style.css" media="all" />
-
-<?
 require_once("models/config.php");
-if (!securePage($_SERVER['PHP_SELF'])){die();}
-
-//Prevent the user visiting the logged in page if he/she is already logged in
-if(isUserLoggedIn()) 
-{ 
-	flush();
-	header("Location: index.php");
-	?>
-	<br/><br/><p>If you still are on this page please click <a href="index.php">HERE</a></p>
-	<?php
-	die();
-}
-
-//Forms posted
+	//Forms posted
 if(!empty($_POST))
 {
 	$errors = array();
@@ -96,12 +75,27 @@ if(!empty($_POST))
 		}
 	}
 }
+if (!securePage($_SERVER['PHP_SELF'])){die();}
 
-echo resultBlock($errors,$successes);
+//Prevent the user visiting the logged in page if he/she is already logged in
+if(isUserLoggedIn()) 
+{ 
+	?>
+	<br/><br/><p>If you still are on this page please click <a href="index.php">HERE</a></p>
+	<?php
+	die();
+}
+include "header.php";
 
-echo "
+
+?>
+
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
+<link rel="stylesheet" type="text/css" href="style.css" media="all" />
+
+<? echo resultBlock($errors,$successes); ?>
 <div id='regbox'>
-<form name='login' action='".$_SERVER['PHP_SELF']."' method='post'>
+<form name='login' action='<? echo $_SERVER['PHP_SELF'] ?>' method='post'>
 <p>
 <label>Username:</label>
 <input type='text' name='username' />
@@ -120,6 +114,4 @@ echo "
 <div id='bottom'></div>
 </div>
 </body>
-</html>";
-
-?>
+</html>

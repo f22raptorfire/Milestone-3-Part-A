@@ -6,6 +6,7 @@
 	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
     <link rel="stylesheet" type="text/css" href="style.css" media="all" />
 	<script type="text/javascript" src="include/jquery-2.0.3.js"></script>
+	<script type="text/javascript" src="include/ui/jquery-ui.js"></script>
 	<script type="text/javascript" src="include/DataTables-1.9.4/media/js/jquery.dataTables.js"></script>
 	<script type="text/css" src="include/DataTables-1.9.4/media/css/jquery.dataTables.css"></script> 
 	<script class="jsbin" src="http://datatables.net/download/build/jquery.dataTables.nightly.js"></script>
@@ -32,6 +33,43 @@
 		xmlhttp.open("GET","process.php?course_id="+course_id+"&func=ac",true);
 		xmlhttp.send();
 	}
+	
+	function relevantCourses(id, obj) {
+		$.ajax({
+			dataType: "json",
+			url: "related.php?id=" + id,
+			success: function(result) {
+				console.log('SUCCESS', result);
+				
+			
+			    $(id).tooltip({
+			        content: function () {
+			            return "TOOL TIP";
+			        },
+			        show: null, 
+			        close: function (event, ui) {
+			            ui.tooltip.hover(
+			
+			            function () {
+			                $(this).stop(true).fadeTo(400, 1);
+			            },
+			
+			            function () {
+			                $(this).fadeOut("400", function () {
+			                    $(this).remove();
+			                })
+			            });
+			        }
+			    });
+			},
+			error: function(xhr, ts, err) {
+				console.log(err);
+			}
+		})
+		console.log(id);
+		
+	}
+	
 	</script>
 	<?
 		include "header.php";
@@ -97,7 +135,7 @@
 		list($id, $profname, $profimage, $cid) = mysql_fetch_array($result_detail);
 ?>
 
-  <tr height = '100'>
+  <tr id="<? $course_id ?>" onMouseover='relevantCourses(<? echo $course_id ?>, this)' height = '100'>
     <td width = '200' align='center'>
       <a href = '<?php echo $course_link ?>'>
 			<?php echo $title ?>
