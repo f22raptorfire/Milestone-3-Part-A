@@ -1,47 +1,49 @@
 <html>
 <head>
-	<title>home</title>
+	<title>Group 4 - MOOC</title>
 
 	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
     <link rel="stylesheet" type="text/css" href="style.css" media="all" />
 
 	<style type="text/css"> 
-#navcontainer ul
-{
-margin: 0;
-padding: 0;
-list-style-type: none;
-text-align: center;
-}
-
-#navcontainer ul li { display: inline; }
-
-#navcontainer ul li a
-{
-text-decoration: none;
-padding: .2em 1em;
-}
-	a { font-size: 10px;}
-
-	
-	body {
-		margin-left:auto;
-		margin-right:auto;
+		#navcontainer ul
+		{
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
 		text-align: center;
-	}
+		}
+		
+		#navcontainer ul li { display: inline; }
+		
+		#navcontainer ul li a
+		{
+		text-decoration: none;
+		padding: .2em 1em;
+		}
+		#navcontainer a { font-size: 10px;}
 	
-	img {padding: 5px;}
-	
-	p {
-		padding: 5px;
-		text-align: left;
-	}
+		
+		body {
+			margin-left:auto;
+			margin-right:auto;
+			text-align: center;
+		}
+		
+		img {padding: 5px;}
+		
+		p {
+			padding: 5px;
+			text-align: left;
+		}
 	
 	</style>
 	
 	
 </head>
 <body>
+
+<?php include "header.php";?>
 
 <?php include "slider.php";?>
 

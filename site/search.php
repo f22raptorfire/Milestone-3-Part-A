@@ -2,30 +2,50 @@
 <html lang="en-US">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<title>search</title>
+	<title>Seach Courses</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
     <link rel="stylesheet" type="text/css" href="style.css" media="all" />
-	
-	
-		<script type="text/javascript" src="include/jquery-2.0.3.js"></script>
-		<script type="text/javascript" src="include/DataTables-1.9.4/media/js/jquery.dataTables.js"></script>
-		<script type="text/css" src="include/DataTables-1.9.4/media/css/jquery.dataTables.css"></script> 
-		<script class="jsbin" src="http://datatables.net/download/build/jquery.dataTables.nightly.js"></script>
-		<script type="text/javascript">
-		$(document).ready( function () {
-				$('div[class="container"] [class="table table-striped"]').dataTable();		
-	} );
-	
-		</script>
-		
-	
-	
+	<script type="text/javascript" src="include/jquery-2.0.3.js"></script>
+	<script type="text/javascript" src="include/DataTables-1.9.4/media/js/jquery.dataTables.js"></script>
+	<script type="text/css" src="include/DataTables-1.9.4/media/css/jquery.dataTables.css"></script> 
+	<script class="jsbin" src="http://datatables.net/download/build/jquery.dataTables.nightly.js"></script>
+	<script type="text/javascript">
+	$(document).ready( function () 
+	{
+		$('div[class="container"] [class="table table-striped"]').dataTable(
+		{
+			"oLanguage": {
+				"sSearch": "Filter records:"
+			}
+		});		
+	});
+	function addCourse(course_id)
+	{
+		xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange=function()
+		{
+			if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			{
+				alert(xmlhttp.responseText);
+			}
+		}
+		xmlhttp.open("GET","process.php?course_id="+course_id+"&func=ac",true);
+		xmlhttp.send();
+	}
+	</script>
+	<?
+		include "header.php";
+	?>
 </head>
+
 <body>
 
 <br />
 <br />	
-<a style="margin-left:5%" href="index.php">[new search]</a>
+<form action="search.php" method="GET">
+	<label for="term"><b>New Search: </b><input type="text" name="term" size="50">
+	<input type="submit" value="Search">
+</form>
 <br />
 <br />
 <br />
@@ -37,7 +57,6 @@
 <br />
 
 <?php
-    include("dbconnect.php");
     $result = mysql_query("SELECT * FROM course_data WHERE site LIKE '%$_GET[term]%' OR title LIKE '%$_GET[term]%' OR category LIKE '%$_GET[term]%'");
 ?>
 
@@ -81,13 +100,26 @@
   <tr height = '100'>
     <td width = '200' align='center'>
       <a href = '<?php echo $course_link ?>'>
-<?php echo $title ?>
+			<?php echo $title ?>
 	  </a>
 <?php if($video_link) { ?>
       <a href = '<?php echo $video_link ?>'>
       <img src = 'images/play_btn_icon.png' width ='15' height='15'>
 	  </a>
 <?php }; ?>
+		<br>
+
+	<?
+		if(isUserLoggedIn())
+		{
+			echo "<button type='button' onclick='addCourse($course_id)'>Add course</button>";
+		}
+		else
+		{
+			echo "<button type='button' disabled='true'>Add course</button>";
+		}
+	?>
+
     </td>                    
     <td width="100" align='center'>
       <a href='<?php echo $course_link ?>'>

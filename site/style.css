@@ -52,6 +52,34 @@ body {
 	background-color:#f3f3f3;
 }
 
+/* Kurt Anderson */
+#head
+{
+	background-color: #dddddd;
+	height: 36px;
+}
+#headlist
+{
+	padding-top: 5px;
+	text-align: left;
+}
+.headitem
+{
+	margin: 0 2px 0 2px;
+	display: inline;
+}
+#home
+{
+	font-size: 2em;
+	color: #0000f0;
+}
+#headerbottom
+{
+	height: 8px;
+	background-color: #0000f0;
+}
+/* Kurt Anderson */
+
 #faded { 
 	margin:0 auto;
 	width:899px;
@@ -95,12 +123,14 @@ ul.pagination li {
 ul.pagination li a { 	
 	display: block;
 	background-image:url(images/blue.jpg);
+	line-height:16px;
 	width:16px;
 	background-position: 0 0;
 }
 
 ul.pagination li.current a { 
 	background-image:url(images/blue.jpg);
+	line-height:16px;
 	width:16px;
 	background-position: 0 -16px;
 	
@@ -108,5 +138,6 @@ ul.pagination li.current a {
 
 ul.pagination li a:hover { 
 	background-image:url(images/blue.jpg);
+	line-height:16px;
 	background-position: 0 -16px;
 }

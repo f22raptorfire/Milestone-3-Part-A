@@ -1,0 +1,2 @@
+[09-Sep-2008 14:15:25] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 13530984 bytes) in /home/scorehig/public_html/softintelligence/developer/phpmyadmin/libraries/ob.lib.php on line 101
+[07-May-2009 16:27:41] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 10695252 bytes) in /home/scorehig/public_html/softintelligence/developer/phpmyadmin/libraries/ob.lib.php on line 101
