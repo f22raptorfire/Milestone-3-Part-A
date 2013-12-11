@@ -46,15 +46,15 @@ if(isUserLoggedIn())
 		<h1>MyCourses Calendar</h1>
 		<br>
 		<table>
-			<td>
+			<th>
 				Start Date
-			</td>
-			<td>
+			</th>
+			<th>
 				Weeks
-			</td>
-			<td>
+			</th>
+			<th>
 				Title
-			</td>";
+			</th>";
 
 		$courses = $loggedInUser->getAllCourses();
 		$course_array = explode("|",$courses);		
